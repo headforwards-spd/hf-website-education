@@ -1,0 +1,186 @@
+@use "sass:math";
+@import "../../scss/variables";
+@import "../../scss/mixins/mixins";
+@import "../../scss/mixins/typography";
+@import "../../scss/mixins/page-component";
+@import "./mixins";
+
+.header {
+  display: flex;
+  flex-direction: column;
+
+  @include header;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  > section {
+    display: flex;
+
+    flex-direction: column;
+    margin: $component-gutter-sm auto;
+
+    order: 2;
+
+    padding-bottom: $component-gutter-sm;
+
+    position: relative;
+
+    h1 {
+      @include headingFontXLarge;
+      @include orange-type;
+      @media (min-width: $screen-lg) {
+        width: $singleColumnMaxWidth;
+      }
+    }
+    p {
+      @include fontLarge;
+      color: black;
+      font-weight: bold;
+      @media (min-width: $screen-lg) {
+        width: $singleColumnMaxWidth;
+      }
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+
+    &:after {
+      background: $grey-8;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 2px;
+      position: absolute;
+      width: calc(100% - #{2 * $column-gutter-sm});
+      @media (min-width: $screen-md) {
+        width: calc(100% - #{2 * $column-gutter-md});
+      }
+      @media (min-width: $screen-lg) {
+        width: calc(100% - #{2 * $column-gutter-lg});
+      }
+    }
+    @media (min-width: $screen-md) {
+      margin: $component-gutter-md auto;
+      padding-bottom: 0;
+
+      h1 {
+        @include headingFontXLarge;
+      }
+      h1,
+      p {
+        max-width: $singleColumnMaxWidth;
+      }
+    }
+
+    @media (min-width: $screen-lg) {
+      margin: $component-gutter-lg auto;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    margin-bottom: $component-gutter-md;
+
+    > section {
+      margin-bottom: 0;
+      padding-bottom: math.div($component-gutter-md, 2);
+
+      &.hasSubTitle {
+        h1,
+        p {
+          @include headingFontLarge;
+          line-height: 1.15;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &.hasBackground {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+      min-height: 62.5vh;
+      position: relative;
+
+      &.isHomePage {
+        min-height: calc(100vh - 4.5em);
+      }
+
+      > section {
+        margin-bottom: $component-gutter-md;
+        margin-top: auto;
+        padding-bottom: 0;
+
+        h1 {
+          color: white;
+          margin-bottom: 0;
+        }
+
+        p {
+          @include fontLarge;
+          @include orange-type;
+        }
+
+        &:after {
+          display: none;
+        }
+
+        &.hasSubTitle {
+          p {
+            order: 1;
+          }
+
+          h1 {
+            order: 2;
+          }
+        }
+      }
+
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        background: linear-gradient(
+          rgba(black, 1),
+          transparent 175px,
+          transparent calc(100% - 400px),
+          rgba(black, 1)
+        );
+
+        .image {
+          opacity: 0.9 !important;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: $component-gutter-lg;
+
+    &.hasBackground {
+      &.isHomePage {
+        min-height: 100vh;
+
+        > section {
+          h1 {
+            @include headingFontHomePage;
+          }
+        }
+      }
+
+      > section {
+        margin-bottom: math.div($component-gutter-lg, 2);
+      }
+    }
+  }
+
+  @media (min-width: $screen-xl) {
+    &.hasBackground {
+      min-height: 65vh;
+      background > section {
+        justify-content: flex-end;
+        min-height: 20vw;
+      }
+    }
+  }
+}

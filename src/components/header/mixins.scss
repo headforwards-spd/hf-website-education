@@ -1,0 +1,60 @@
+@use "sass:math";
+@import "../../scss/variables";
+@import "../../scss/mixins/typography";
+
+@mixin header {
+  z-index: 500;
+
+  @include fontMedium;
+  position: relative;
+  margin-top: 4em;
+
+  nav {
+    @include fontMedium;
+    transition: background-color math.div($transitionTime, 2) ease;
+    position: absolute;
+    top: calc(2px - 4em);
+    z-index: 1;
+
+    &:global(.menu-open) {
+      top: 0;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    margin-top: 4.5em;
+
+    nav {
+      top: -4.5em;
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-top: 0;
+    padding-top: calc(5em + 2px);
+
+    nav {
+      top: 0;
+
+      &:global(.menu-open) {
+        top: calc(-5em - 2px);
+      }
+    }
+  }
+
+  @media (min-width: $max_width_gutter) {
+    > nav {
+      top: 0;
+      left: 0;
+      right: 0;
+
+      max-width: unset;
+      padding-left: calc(50vw - #{math.div($max_width, 2)});
+      padding-right: calc(50vw - #{math.div($max_width, 2)});
+
+      &:after {
+        width: $max_width;
+      }
+    }
+  }
+}

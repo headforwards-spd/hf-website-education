@@ -1,0 +1,35 @@
+@import "./variables";
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  > main {
+    flex-grow: 1;
+  }
+
+  > header > *,
+  > main,
+  > footer > ul,
+  > footer > address,
+  > footer > section > * {
+    margin: 0 auto;
+    padding: 0 $column-gutter-sm;
+    width: 100%;
+    @media (min-width: $screen-md) {
+      padding: 0 $column-gutter-md;
+    }
+    @media (min-width: $screen-lg) {
+      max-width: calc(#{$max_width} + #{2 * $column-gutter-lg * 2});
+      padding: 0 $column-gutter-lg;
+    }
+  }
+
+  > header,
+  > footer {
+    flex-shrink: 0;
+
+    width: 100%;
+  }
+}

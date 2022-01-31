@@ -1,0 +1,58 @@
+@import "../variables";
+@import "./mixins";
+@import "./typography";
+@import "./page-component";
+
+@mixin columns-component {
+  @include component-columns-gutter;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $screen-md) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@mixin columns-component-tight {
+  @include component-columns-gutter-tight;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $screen-md) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@mixin copy {
+  @include fontMedium;
+  > section {
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  > a {
+    @include fontLarge;
+    display: block;
+    @include arrow-link;
+    margin-top: $component-gutter-sm;
+    @media (min-width: $screen-md) {
+      margin-top: $component-gutter-md;
+    }
+    @media (min-width: $screen-lg) {
+      margin-top: $component-gutter-lg;
+    }
+    font-weight: normal;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "FS Albert";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/FSAlbert/Bold.woff2") format("woff2"),
+    url("/fonts/FSAlbert/Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "FS Albert";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/FSAlbert/Regular.woff2") format("woff2"),
+    url("/fonts/FSAlbert/Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "FS Albert";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/FSAlbert/Italic.woff2") format("woff2"),
+    url("/fonts/FSAlbert/Italic.woff") format("woff");
+}

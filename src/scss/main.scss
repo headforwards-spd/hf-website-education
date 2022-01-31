@@ -1,0 +1,68 @@
+@use "sass:math";
+@import "normalize.css";
+@import "./fonts/fs-albert-web";
+@import "./variables";
+@import "./mixins/typography";
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  margin: 0;
+  @include fontBase;
+  font-family: "FS Albert Web", Arial, sans-serif;
+
+  overflow-x: hidden;
+
+  > div {
+    > div {
+      > header,
+      > footer {
+        flex-shrink: 0;
+      }
+
+      > main {
+        flex-grow: 1;
+      }
+
+      > header > *,
+      > main,
+      > footer > ul,
+      > footer > address,
+      > footer > section > * {
+        @include fontMedium;
+        margin: 0 auto;
+        padding: 0 $column-gutter-sm;
+        width: 100%;
+        @media (min-width: $screen-md) {
+          padding: 0 $column-gutter-md;
+        }
+        @media (min-width: $screen-lg) {
+          max-width: calc(#{$max_width} + #{$column-gutter-lg * 2});
+          padding: 0 $column-gutter-lg;
+        }
+      }
+    }
+  }
+
+  li {
+    margin-bottom: 0;
+  }
+
+  a {
+    @include orange-type;
+    text-decoration: none;
+  }
+
+  ul {
+    justify-content: center;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+}

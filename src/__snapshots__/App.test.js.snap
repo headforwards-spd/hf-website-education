@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders and snapshots careers page. 1`] = `undefined`;
+
+exports[`renders and snapshots how we work page. 1`] = `undefined`;
+
+exports[`renders and snapshots the Home page 1`] = `
+<div>
+  <div
+    class="body"
+  >
+    <header
+      class="header hasBackground isHomePage "
+      style="background-image: url(headforwards-1.jpg);"
+    >
+      <nav
+        class="menu with-bg menu-open"
+      >
+        <header>
+          <a
+            href="/"
+          >
+            Headforwards
+          </a>
+        </header>
+        <section>
+          <ul>
+            <li
+              class="navHomeLink"
+            >
+              <a
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/who-we-are"
+              >
+                Who We Are.
+              </a>
+            </li>
+            <li>
+              <a
+                href="/what-we-do"
+              >
+                What We Do.
+              </a>
+            </li>
+            <li>
+              <a
+                href="/how-we-work"
+              >
+                How We Work.
+              </a>
+            </li>
+            <li>
+              <a
+                href="/careers"
+              >
+                Careers.
+              </a>
+            </li>
+          </ul>
+        </section>
+      </nav>
+      <section
+        class=""
+      >
+        <h1>
+          Forward thinking software
+        </h1>
+      </section>
+    </header>
+    <main
+      class="body"
+    >
+      <div>
+        <div
+          class="intro"
+        >
+          <section>
+            <p>
+              Headforwards is an outsource software development company.
+            </p>
+            <p>
+              Using Agile principles and dedicated teams recruited specifically for their clients, Headforwards delivers software that creates real business value.
+            </p>
+          </section>
+        </div>
+        <section
+          class=" section hasImage"
+        >
+          <img
+            alt="People Over Process"
+            class="image"
+            src="toby-and-craig.jpg"
+          />
+          <section
+            class="components"
+          >
+            <section
+              class="hero hasTitle"
+            >
+              <h2>
+                People over Process
+              </h2>
+              <section
+                class="markdown"
+              >
+                <div
+                  class="markdown"
+                >
+                  <p>
+                    Developers are recruited specifically for a client’s needs and teams are self-organising with the responsibility of producing software that delivers business value.
+                  </p>
+                </div>
+                <section
+                  class="blockquoteContainer fullWidth"
+                >
+                  <blockquote>
+                    <p>
+                      It's about picking the right people for each client, rather than running a bench.
+                    </p>
+                    <footer>
+                      <section>
+                        <h2>
+                          Toby Parkins
+                        </h2>
+                        <p>
+                          DIRECTOR & CO-FOUNDER
+                        </p>
+                      </section>
+                    </footer>
+                  </blockquote>
+                </section>
+                <section
+                  class="blockquoteContainer fullWidth"
+                >
+                  <blockquote>
+                    <p>
+                      If something changes in our client's world, they've got to adapt, they've got to look for a new competitive advantage in their software.
+                    </p>
+                    <footer>
+                      <section>
+                        <h2>
+                          Craig Girvan
+                        </h2>
+                        <p>
+                          DIRECTOR & CO-FOUNDER
+                        </p>
+                      </section>
+                    </footer>
+                  </blockquote>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+        <section
+          class=" section isRightImage hasImage"
+        >
+          <div
+            class="postit v7 true isRightImage postit"
+          >
+            <img
+              alt="People Over Process"
+              ratio="100%"
+              src="004.svg"
+            />
+          </div>
+          <section
+            class="components"
+          >
+            <section
+              class="hero hasTitle"
+            >
+              <h2>
+                Building partnerships with clients
+              </h2>
+              <section
+                class="markdown"
+              >
+                <div
+                  class="markdown"
+                >
+                  <p>
+                    Headforwards looks to develop trust between themselves and their client's by continuously delivering business value.
+                  </p>
+                </div>
+                <section
+                  class="blockquoteContainer fullWidth"
+                >
+                  <blockquote>
+                    <p>
+                      We want to be a partner to our clients, to develop long-term relationships with trust on both sides.
+                    </p>
+                  </blockquote>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+        <section
+          class=" section hasImage"
+        >
+          <img
+            alt="People Over Process"
+            class="image"
+            src="team-2.jpg"
+          />
+          <section
+            class="components"
+          >
+            <section
+              class="hero hasTitle"
+            >
+              <h2>
+                Careers without compromise
+              </h2>
+              <section
+                class="markdown"
+              >
+                <div
+                  class="markdown"
+                >
+                  <p>
+                    Headforwards is based in one of the most beautiful and inspiring parts of the UK - at the same time working at the forefront of professional technical excellence.
+                  </p>
+                </div>
+                <section
+                  class="blockquoteContainer fullWidth"
+                >
+                  <blockquote>
+                    <p>
+                      There are no egos here. Team fit is the most important thing, so the people we hire need to be really positive and prepared to have each other’s backs.
+                    </p>
+                  </blockquote>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </div>
+    </main>
+    <footer
+      class="footer"
+    >
+      <section
+        class="getInTouch"
+      >
+        <h2>
+          Want to know more about how we use mobbing to deliver quality software?
+           
+          <a
+            href="/contact"
+          >
+            Get in touch
+          </a>
+        </h2>
+      </section>
+      <address>
+        <section>
+          <a
+            href="/mailto:hello@headforwards.com"
+          >
+            hello@headforwards.com
+          </a>
+          <a
+            href="/tel:+44 (0)1209 311 151"
+          >
+            +44 (0)1209 311 151
+          </a>
+        </section>
+        <section>
+          <section
+            class="copyright"
+          >
+            © 
+            2022
+             
+            Headforwards
+          </section>
+          <section
+            class="address"
+          >
+            Pool Innovation Centre, Trevenson Rd, Redruth, Cornwall, TR15 3PL, UK
+          </section>
+        </section>
+      </address>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`renders and snapshots what we do page. 1`] = `undefined`;
+
+exports[`renders and snapshots who we are page. 1`] = `undefined`;

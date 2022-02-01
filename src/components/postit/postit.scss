@@ -1,0 +1,56 @@
+$postitLeft: perspective(24rem) rotateY(1deg);
+$postitRight: perspective(24rem) rotateY(-1deg);
+
+.postit {
+  background-color: #ffcc55;
+  background-size: cover;
+  padding-bottom: 100%;
+
+  position: relative;
+  transform: $postitLeft;
+  &.isRightImage {
+    transform: $postitRight;
+  }
+
+  width: 100%;
+
+  > * {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &.v1 {
+    background-image: url("/assets/images/postit-background.1.webp");
+  }
+
+  &.v2 {
+    background-image: url("/assets/images/postit-background.2.webp");
+  }
+
+  &.v3 {
+    background-image: url("/assets/images/postit-background.3.webp");
+  }
+
+  &.v4 {
+    background-image: url("/assets/images/postit-background.4.webp");
+  }
+
+  &.v5 {
+    background-image: url("/assets/images/postit-background.5.webp");
+  }
+
+  &.v6 {
+    background-image: url("/assets/images/postit-background.6.webp");
+  }
+
+  &.v7 {
+    background-image: url("/assets/images/postit-background.7.webp");
+  }
+
+  &.v8 {
+    background-image: url("/assets/images/postit-background.8.webp");
+  }
+}

@@ -1,0 +1,254 @@
+@use "sass:math";
+@import "../../scss/mixins/columns";
+@import "../../scss/variables";
+
+.intro {
+  @media (min-width: $screen-md) {
+    position: relative;
+    width: $singleColumnMaxWidth;
+    &:after {
+      @media (min-width: $screen-md) {
+        content: url("../../assets/images/hf-arrow.black.svg");
+        opacity: 0.05;
+        position: absolute;
+        right: -50%;
+        top: -$component-gutter-md + math.div($column-gutter-md, 2);
+        width: 62.5%;
+        z-index: -1;
+      }
+      @media (min-width: $screen-lg) {
+        top: -$component-gutter-lg + math.div($column-gutter-lg, 2);
+      }
+    }
+  }
+}
+
+.section {
+  @include component-gutter;
+
+  &.first {
+    position: relative;
+
+    &:after {
+      @media (min-width: $screen-md) {
+        bottom: -25%;
+        content: url("../../assets/images/hf-arrow.black.svg");
+        left: -37.5%;
+        opacity: 0.6;
+        position: absolute;
+        width: 50%;
+      }
+    }
+  }
+
+  &:last-child {
+    position: relative;
+
+    &:before {
+      @media (min-width: $screen-md) {
+        bottom: math.div(-$component-gutter-md, 2);
+        content: url("../../assets/images/hf-arrow.black.svg");
+        opacity: 0.05;
+        position: absolute;
+
+        right: -$column-gutter-md * 2;
+        width: 20%;
+      }
+      @media (min-width: $screen-lg) {
+        bottom: math.div(-$component-gutter-lg, 2);
+        right: -$column-gutter-lg * 2;
+      }
+    }
+  }
+
+  .components {
+    @include fontMedium;
+
+    > :first-child:after {
+      display: none;
+    }
+
+    > * {
+      margin: 0;
+
+      :last-child {
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    blockquote {
+      margin-left: 0;
+
+      p {
+        @include fontLarge;
+      }
+
+      footer p {
+        @include fontSmall;
+      }
+      @media (min-width: $screen-md) {
+        @include fontMedium;
+        padding-left: math.div($column-gutter-md, 2);
+      }
+      @media (min-width: $screen-lg) {
+        padding-left: math.div($column-gutter-lg, 2);
+      }
+    }
+  }
+
+  &.hasImage {
+    @include columns-component;
+
+    &.isRightImage {
+      @media (min-width: $screen-md) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    .image {
+      object-fit: cover;
+      margin-left: math.div(-$column-gutter-sm, 2);
+      margin-right: math.div(-$column-gutter-sm, 2);
+      @media (min-width: $screen-md) {
+        align-self: stretch;
+        margin: math.div($column-gutter-md, 2);
+        > div {
+          display: none;
+        }
+      }
+
+      @media (min-width: $screen-lg) {
+        margin: math.div($column-gutter-lg, 2);
+      }
+    }
+
+    .components {
+      padding: math.div($component-gutter-sm, 2) 0;
+      @media (min-width: $screen-md) {
+        padding: math.div($component-gutter-md, 2) 0;
+      }
+      @media (min-width: $screen-lg) {
+        padding: math.div($component-gutter-lg, 2) 0;
+      }
+    }
+
+    .image,
+    .postit {
+      @include fontMedium;
+    }
+
+    .postit {
+      padding-bottom: calc(100% - #{$column-gutter-sm});
+      width: calc(100% - #{$column-gutter-sm});
+    }
+
+    .image,
+    .postit,
+    .components {
+      @media (min-width: $screen-md) {
+        width: calc(50% - #{$column-gutter-md});
+        &.postit {
+          padding-bottom: calc(50% - #{$column-gutter-md});
+        }
+      }
+      @media (min-width: $screen-lg) {
+        width: calc(50% - #{$column-gutter-lg});
+        &.postit {
+          padding-bottom: calc(50% - #{$column-gutter-lg});
+        }
+      }
+    }
+  }
+  .hero {
+    @include component-gutter;
+    @include fontMedium;
+    margin: 0;
+    margin-bottom: $component-gutter-sm;
+    @media (min-width: $screen-md) {
+      margin: 0;
+      margin-bottom: $component-gutter-md;
+    }
+    @media (min-width: $screen-lg) {
+      margin: 0;
+      margin-bottom: $component-gutter-lg;
+    }
+
+    > section {
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &.isIntro:first-child:after {
+      @media (min-width: $screen-md) {
+        content: url("../../assets/images/hf-arrow.black.svg");
+        opacity: 0.05;
+        position: absolute;
+        right: -50%;
+        top: -$component-gutter-md + math.div($column-gutter-md, 2);
+        width: 62.5%;
+        z-index: -1;
+      }
+      @media (min-width: $screen-lg) {
+        top: -$component-gutter-lg + math.div($column-gutter-lg, 2);
+      }
+    }
+
+    &.isTwoColumns:after {
+      display: none;
+    }
+
+    @media (min-width: $screen-md) {
+      max-width: $singleColumnMaxWidth;
+      position: relative;
+
+      &.isTwoColumns {
+        align-items: flex-start;
+        display: flex;
+        max-width: unset;
+
+        > section {
+          column-count: 2;
+          column-gap: 2 * $column-gutter-md;
+        }
+
+        &.hasTitle {
+          h2 {
+            flex-grow: 1;
+            flex-shrink: 1;
+          }
+
+          > section {
+            column-count: unset;
+            column-gap: unset;
+            flex-shrink: 0;
+            margin-left: $column-gutter-md;
+            width: calc(62.5% - #{math.div($column-gutter-md, 2)});
+          }
+        }
+      }
+    }
+    @media (min-width: $screen-lg) {
+      &.isTwoColumns {
+        > section {
+          column-gap: 2 * $column-gutter-lg;
+        }
+
+        &.hasTitle {
+          > section {
+            margin-left: $column-gutter-lg;
+            width: calc(62.5% - #{math.div($column-gutter-lg, 2)});
+          }
+        }
+      }
+    }
+  }
+
+  .markdown {
+    @include markdown;
+  }
+}

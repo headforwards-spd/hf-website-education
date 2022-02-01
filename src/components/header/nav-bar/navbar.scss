@@ -1,0 +1,491 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins/mixins";
+@import "../../../scss/mixins/typography";
+@import "../../../scss//mixins/page-component";
+
+.menu {
+  border-bottom: 1px solid $grey-9;
+
+  line-height: 1;
+
+  margin-bottom: 0;
+  padding-bottom: $component-gutter-sm/4;
+
+  padding-top: $component-gutter-sm/4;
+
+  position: relative;
+  @media (min-width: $screen-md) {
+    padding-bottom: $component-gutter-md/4;
+    padding-top: $component-gutter-md/4;
+  }
+  @media (min-width: $screen-lg) {
+    padding-bottom: $component-gutter-lg/4;
+    padding-top: $component-gutter-lg/4;
+  }
+
+  > header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 -#{$column-gutter-sm/2};
+    @media (min-width: $screen-md) {
+      margin: 0 -#{$column-gutter-md/2};
+    }
+    @media (min-width: $screen-lg) {
+      margin: 0 -#{$column-gutter-lg/2};
+    }
+
+    a {
+      background-image: url("../../../assets/images/headforwards-logo.white.svg");
+      background-position: 0 center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex: 1;
+
+      line-height: 3;
+      margin: 0.375em $column-gutter-sm/2;
+      text-indent: -1000vw;
+      height: 2.25em;
+      @media (min-width: $screen-md) {
+        margin: 0.375em $column-gutter-md/2;
+      }
+      @media (min-width: $screen-lg) {
+        margin: 0 $column-gutter-lg/2;
+        height: 2.25em;
+      }
+      @media (min-width: $screen-xl) {
+        margin-left: -1.5em;
+      }
+    }
+  }
+
+  > section {
+    display: none;
+    opacity: 0;
+    transition: opacity ease $transitionTime;
+
+    > ul {
+      border-top: 1px solid #383f51;
+
+      margin: 0;
+
+      a {
+        transition: all $transitionTime ease;
+
+        &:hover {
+          color: $orange;
+        }
+      }
+
+      .navHomeLink {
+        display: none;
+      }
+
+      .isActive {
+        > a {
+          color: $orange;
+        }
+      }
+
+      > li > a {
+        align-items: center;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        line-height: 2;
+        margin-bottom: 0;
+        text-decoration: none;
+      }
+
+      > li {
+        @include fontXLarge;
+
+        border-bottom: 1px solid #383f51;
+
+        text-decoration: none;
+
+        &.hasChildren > a {
+          display: flex;
+          align-items: stretch;
+
+          button {
+            @include fontSmall;
+            background: none;
+            border: none;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3em;
+            padding: 0;
+          }
+        }
+
+        h2 {
+          display: none;
+        }
+
+        > section {
+          display: none;
+
+          ul {
+            @include fontLarge;
+            margin: #{$rhythm-unit/2}em 0 #{$rhythm-unit}em;
+          }
+
+          a {
+            color: #7c8c9c;
+            display: block;
+            font-weight: 400;
+            line-height: $rhythm-unit;
+            padding: 0.2em 0;
+          }
+        }
+
+        &.isActive {
+          > section {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .contactDetails {
+      dt,
+      dd,
+      h2,
+      li {
+        &,
+        h2 {
+          margin-bottom: 0;
+        }
+
+        @media (min-width: $screen-md) {
+          &,
+          h2 {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      dt,
+      dd {
+        color: white;
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+
+      dt,
+      h2 {
+        @include headingFontSmall;
+        font-weight: 400;
+        margin-bottom: 0;
+        @include orange-type;
+        text-transform: uppercase;
+        @media (min-width: $screen-md) {
+          @include headingFontSmallVr;
+          margin-bottom: 0;
+          font-weight: 400;
+        }
+      }
+
+      dd,
+      li {
+        @include headingFontMedium;
+        line-height: 2;
+        margin-bottom: 0;
+        @media (min-width: $screen-md) {
+          @include fontMedium;
+          margin-bottom: 0;
+        }
+      }
+
+      ul {
+        margin-bottom: $column-gutter-sm/2;
+      }
+    }
+  }
+
+  .menu-open {
+    background-color: $blue-background;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    z-index: 500;
+    @media screen and (min-width: $screen-lg) {
+      position: relative;
+    }
+
+    > header {
+      a {
+        background-image: url("../../../assets/images/headforwards-logo.white.svg");
+      }
+    }
+
+    > section {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin-top: $component-gutter-sm/4;
+      opacity: 1;
+      overflow: hidden;
+
+      ul {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow-x: auto;
+        @media screen and (min-width: $screen-lg) {
+          overflow-x: unset;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    > section {
+      margin-top: 0;
+
+      > ul {
+        border-top: none;
+        @include fontMedium;
+        display: flex;
+        flex-direction: row;
+        margin: $component-gutter-md -#{$column-gutter-md/2};
+
+        .navHomeLink {
+          display: unset;
+        }
+
+        .navContactLink {
+          display: none;
+        }
+
+        > li {
+          border-bottom: none;
+          margin: 0 $column-gutter-md/2;
+          width: calc((100% / 5) - #{$column-gutter-md});
+
+          > a {
+            @include fontMedium;
+            border-bottom: 1px solid rgba($grey-9, 0.2);
+          }
+
+          > section {
+            ul li {
+              @include fontSmall;
+              line-height: 1.2;
+              margin: 1.2em 0;
+            }
+
+            font-weight: normal;
+            padding: 0;
+          }
+
+          &.hasChildren {
+            > a button {
+              display: none;
+            }
+
+            > section {
+              display: unset;
+            }
+          }
+        }
+      }
+
+      > section {
+        display: flex;
+        margin: 0 -#{$column-gutter-md/2};
+
+        > * {
+          margin: 0 $column-gutter-md/2;
+          min-width: calc((100% / 5) - #{$column-gutter-md});
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    align-items: center;
+    border-bottom: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-bottom: 0;
+    transition: unset;
+
+    &:after {
+      background: #d8d8d8;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      position: absolute;
+      width: calc(100% - #{2 * $column-gutter-lg});
+      opacity: 0.2;
+    }
+
+    > header {
+      flex-grow: 1;
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+
+    > section {
+      display: block;
+      margin-top: $component-gutter-sm/2;
+      max-width: 100%;
+      opacity: unset;
+
+      > ul {
+        @include fontSmall;
+        border-top: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin: 0 -#{$column-gutter-lg/2} 0 #{$column-gutter-lg/2};
+
+        .navHomeLink {
+          display: none;
+        }
+
+        .navContactLink {
+          display: unset;
+        }
+
+        > li {
+          border: none;
+          margin: 0 $column-gutter-lg/2;
+          position: relative;
+          width: unset;
+
+          &:hover > a {
+            color: $orange;
+          }
+
+          &:last-child {
+            border: none;
+          }
+
+          a {
+            border-bottom: unset;
+            color: white;
+
+            &:hover {
+              @include orange-type;
+            }
+          }
+
+          li {
+            a {
+              padding: 0;
+            }
+          }
+
+          &.hasChildren > a {
+            button {
+              display: none;
+            }
+          }
+
+          h2 {
+            color: $orange;
+            display: block;
+            text-transform: uppercase;
+          }
+
+          > section {
+            @include fontMedium;
+            background-color: white;
+            box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.4);
+            color: white;
+            display: block;
+            max-width: $max_width * 0.375;
+            min-width: 15em;
+            opacity: 0;
+            padding: 0 $column-gutter-lg/2;
+            position: absolute;
+
+            right: -$column-gutter-lg/2;
+            transition-delay: 0.1s, 0.75s;
+            transition-duration: 0.5s, 0s;
+            transition-property: opacity, visibility;
+            visibility: hidden;
+            z-index: 1;
+
+            &:before {
+              border: 0.25em solid;
+              border-color: white;
+              box-shadow: -3px 3px 2px 0 rgba(0, 0, 0, 0.1);
+              content: "";
+              height: 0;
+              position: absolute;
+              right: $column-gutter-lg * 1.5;
+              top: -0.25em;
+              transform: rotate(135deg);
+              width: 0;
+            }
+
+            > ul {
+              @include fontMedium;
+              margin: $column-gutter-lg/2 0;
+
+              li {
+                margin: 0;
+              }
+            }
+
+            h2 {
+              @include fontSmall;
+              border-bottom: 1px solid #d8d8d8;
+              font-weight: normal;
+              line-height: 2;
+              margin: 0;
+              padding: $column-gutter-lg/2 0;
+            }
+
+            a {
+              @include fontMedium;
+              color: white;
+              display: block;
+              @include arrow-link;
+              font-weight: bold;
+              line-height: #{$rhythm-unit}em;
+              margin: #{1 - ($rhythm-unit/2)}em;
+            }
+          }
+
+          &:hover {
+            > section {
+              opacity: 1;
+              transition-delay: 0.1s, 0.1s;
+              visibility: visible;
+              z-index: 1000;
+            }
+          }
+        }
+      }
+    }
+
+    .contactDetails {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: $screen-xl) {
+    > section {
+      > ul {
+        @include fontMedium;
+      }
+    }
+  }
+}

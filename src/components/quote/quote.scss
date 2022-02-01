@@ -1,0 +1,196 @@
+@use "sass:math";
+@import "../../scss/variables";
+@import "../../scss/mixins/mixins";
+@import "../../scss/mixins/typography";
+@import "../../scss/mixins/page-component";
+
+.blockquoteContainer {
+  @include component-gutter;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  > h2 {
+    @include headingFontMedium;
+  }
+
+  blockquote {
+    margin: 0;
+
+    > p {
+      @include fontLarge;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.3;
+      margin-bottom: #{math.div($rhythm-unit, 2)}em;
+      padding: 1.5em 0 0;
+      @include orange-type;
+      position: relative;
+
+      &:before,
+      &:after {
+        color: $quotemark-grey;
+        font-size: 2.5em;
+        font-weight: normal;
+      }
+
+      &:before {
+        content: "“";
+        position: absolute;
+        top: 0;
+      }
+
+      &:after {
+        content: "\00a0”";
+        display: inline;
+        line-height: 0;
+        margin-left: -0.2em;
+        vertical-align: text-bottom;
+      }
+    }
+
+    > footer {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+
+      section > :last-child {
+        margin-bottom: 0;
+      }
+
+      h2 {
+        color: black;
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+
+      p {
+        @include fontSmall;
+        color: #b8b8b8;
+        font-style: italic;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .imageCropper {
+        border-radius: 50%;
+        margin-right: 0.5em;
+        overflow: hidden;
+        position: relative;
+        width: 3em;
+
+        @media (min-width: $screen-md) {
+          width: 3.5em;
+        }
+
+        @media (min-width: $screen-lg) {
+          width: 4em;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  .blockquoteContainer {
+    width: $singleColumnMaxWidth;
+
+    blockquote {
+      border-left: 1px solid #d8d8d8;
+      padding-left: $column-gutter-md * math.div(2, 3);
+      padding-top: 0;
+
+      > p {
+        margin-bottom: #{$rhythm-unit}em;
+        padding: 0;
+
+        &:before {
+          background-color: #ffffff;
+          display: inline-block;
+          height: 0.5em;
+          left: -0.3em;
+          line-height: 1;
+          padding-left: 0;
+          top: 0;
+          transform: translateX(-50%);
+          width: 0.5em;
+        }
+      }
+
+      footer h2 {
+        @include headingFontSmall;
+      }
+    }
+
+    &.fullWidth {
+      margin: $component-gutter-md * math.div(2, 3) 0;
+
+      width: unset;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      blockquote {
+        margin-left: math.div(-$column-gutter-md, 2);
+        padding-left: math.div($column-gutter-md, 2);
+
+        > p {
+          @include fontMedium;
+
+          &:before {
+            left: -0.3em;
+          }
+        }
+
+        footer {
+          @include fontXSmall;
+
+          margin-top: 1rem;
+
+          h2 {
+            margin-bottom: 0;
+          }
+
+          p {
+            @include fontSmall;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .blockquoteContainer {
+    blockquote {
+      padding-left: math.div($column-gutter-lg, 2);
+
+      > p {
+        &:before {
+          left: -0.25em;
+        }
+      }
+    }
+
+    &.fullWidth {
+      margin: math.div($component-gutter-lg, 4) 0;
+
+      blockquote {
+        margin-left: math.div(-$column-gutter-lg, 2);
+        padding-left: math.div($column-gutter-lg, 2);
+
+        > p {
+          &:before {
+            left: -0.4em;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import "./typography";
+
+@mixin columnsList {
+  margin: 0 0 #{$rhythm-unit}em;
+  list-style-type: "\2013\2002";
+  list-style-position: outside;
+  li {
+    margin: 0;
+    margin-left: 1em;
+  }
+}

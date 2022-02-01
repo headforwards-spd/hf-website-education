@@ -1,0 +1,8 @@
+@import "../../scss/mixins/page-component";
+@import "../../scss/mixins/columns";
+
+.introduction {
+  @include component-gutter;
+  @include fontMedium;
+  @include markdown;
+}

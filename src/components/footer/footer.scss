@@ -1,0 +1,264 @@
+@use "sass:math";
+
+.calltoaction {
+  background-color: #17192e;
+  overflow: hidden;
+}
+
+@import "../../scss/variables";
+@import "../../scss/mixins/mixins";
+@import "../../scss/mixins/typography";
+@import "../../scss/mixins/page-component";
+@import "../../scss/mixins/columns";
+
+.footer {
+  > section {
+    background-color: $blue-background;
+    overflow: hidden;
+  }
+
+  .footerLinks {
+    > h2 {
+      align-items: stretch;
+      color: $orange;
+      margin-bottom: 0;
+      @include headingFontMedium;
+      padding: calc(1.45em) 0 0.35em;
+      position: relative;
+      @media (min-width: $screen-md) {
+        margin-bottom: 0;
+      }
+    }
+
+    > section {
+      @include columns-component-tight;
+      margin-bottom: math.div(-$column-gutter-sm, 2);
+      &:first-child {
+        margin-top: math.div($column-gutter-sm, 2);
+      }
+      @media (min-width: $screen-md) {
+        align-items: stretch;
+        margin-left: math.div(-$column-gutter-md, 4);
+        margin-right: math.div(-$column-gutter-md, 4);
+        margin-bottom: math.div(-$column-gutter-md, 2);
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      @media (min-width: $screen-lg) {
+        margin-left: math.div(-$column-gutter-lg, 4);
+        margin-right: math.div(-$column-gutter-lg, 4);
+        margin-bottom: math.div(-$column-gutter-lg, 2);
+      }
+
+      > a {
+        width: calc((math.div(100%, 1)) - #{math.div($column-gutter-sm, 2)});
+        margin: math.div($column-gutter-sm, 2) math.div($column-gutter-sm, 4);
+        z-index: 100;
+        @media (min-width: $screen-md) {
+          display: flex;
+          flex-direction: column;
+          margin: math.div($column-gutter-md, 2) math.div($column-gutter-md, 4);
+          width: calc((math.div(100%, 3)) - #{math.div($column-gutter-md, 2)});
+        }
+        @media (min-width: $screen-lg) {
+          margin: math.div($column-gutter-lg, 2) math.div($column-gutter-lg, 4);
+          width: calc((math.div(100%, 3)) - #{math.div($column-gutter-lg, 2)});
+        }
+
+        button {
+          cursor: pointer;
+        }
+
+        section {
+          @include fontMedium;
+          background: white;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          justify-content: stretch;
+          padding: math.div($column-gutter-sm, 2);
+          @media (min-width: $screen-md) {
+            @include fontSmallVr;
+            padding: math.div($column-gutter-md, 2);
+          }
+          @media (min-width: $screen-lg) {
+            padding: math.div($column-gutter-lg, 2);
+          }
+
+          @media (min-width: $screen-md) {
+            margin-bottom: 0;
+          }
+
+          :last-child {
+            margin-bottom: 0;
+          }
+
+          h2 {
+            order: 0;
+          }
+
+          .footerLinkImage {
+            margin: math.div(-$column-gutter-sm, 2);
+            margin-bottom: $column-gutter-sm;
+            order: -1;
+            @media (min-width: $screen-md) {
+              margin: math.div(-$column-gutter-md, 2);
+              margin-bottom: $column-gutter-md;
+            }
+            @media (min-width: $screen-lg) {
+              margin: math.div(-$column-gutter-lg, 2);
+              margin-bottom: $column-gutter-lg;
+            }
+          }
+
+          button {
+            @include arrow-link;
+            align-self: flex-start;
+            background: unset;
+            border: none;
+            color: $orange;
+            flex-grow: 0;
+            font-weight: bold;
+            line-height: $line-height;
+            margin: auto 0 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    h2 + section {
+      margin-top: math.div(-$column-gutter-sm, 2);
+      @media (min-width: $screen-md) {
+        margin-top: math.div(-$column-gutter-md, 2);
+      }
+      @media (min-width: $screen-lg) {
+        margin-top: math.div(-$column-gutter-lg, 2);
+      }
+    }
+  }
+
+  .getInTouch {
+    margin-bottom: 0;
+    position: relative;
+
+    &:before {
+      content: url("../../assets/images/hf-arrow.footer.svg");
+      height: auto;
+      left: 0;
+      position: absolute;
+      top: 75%;
+      transform: translateY(-50%);
+      width: 100%;
+      @media (min-width: $screen-md) {
+        width: $singleColumnMaxWidth;
+      }
+    }
+
+    h2 {
+      color: white;
+      @include headingFontMedium;
+      margin-bottom: 0;
+      padding-bottom: 1.85em;
+      padding-top: 1.85em;
+      position: relative;
+      @media (min-width: $screen-md) {
+        margin-bottom: 0;
+        max-width: $singleColumnMaxWidth;
+      }
+
+      a {
+        display: block;
+        font-weight: normal;
+
+        padding-top: 2em;
+
+        &:before {
+          content: " ";
+        }
+        @include arrow-link;
+
+        &:hover {
+          color: white;
+
+          &:after {
+            background-image: url("../../assets/images/hf-arrow.white.svg");
+          }
+        }
+
+        @media (min-width: $screen-md) {
+          display: inline-block;
+          font-weight: bold;
+          padding-top: unset;
+        }
+      }
+    }
+  }
+
+  address {
+    @include component-gutter;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    @media (min-width: $screen-md) {
+      margin: $column-gutter-md auto $component-gutter-md;
+      :first-child :first-child {
+        &:after {
+          content: "//";
+          font-weight: bold;
+          @include orange-type;
+          padding-left: 0.5em;
+        }
+      }
+    }
+    @media (min-width: $screen-lg) {
+      margin: $column-gutter-lg auto $component-gutter-lg;
+      :first-child :first-child {
+        &:after {
+          content: "//";
+          font-weight: bold;
+          @include orange-type;
+          padding-left: $column-gutter-sm;
+        }
+      }
+    }
+
+    a,
+    .address,
+    .copyright {
+      color: black;
+      display: block;
+      line-height: 2;
+      padding: 0 math.div($column-gutter-sm, 2);
+    }
+
+    a {
+      line-height: 3;
+    }
+
+    .address,
+    .copyright,
+    .legal a {
+      font-weight: lighter;
+    }
+
+    .legal a {
+      transition: all $transitionTime ease;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+
+    section {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

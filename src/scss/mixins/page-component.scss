@@ -1,0 +1,121 @@
+@use "sass:math";
+@import "../variables";
+@import "./typography";
+
+@mixin component-gutter($fullWidth: false) {
+  margin: 0 0 $component-gutter-sm;
+  @media (min-width: $screen-md) {
+    margin: 0 0 $component-gutter-md;
+  }
+  @media (min-width: $screen-lg) {
+    margin: 0 0 $component-gutter-lg;
+  }
+}
+
+@mixin component-columns-gutter {
+  @include component-gutter;
+
+  margin: -#{math.div($column-gutter-sm, 2)} -#{math.div($column-gutter-sm, 2)}
+    #{$component-gutter-sm - math.div($column-gutter-sm, 2)};
+  > * {
+    margin: math.div($column-gutter-sm, 2);
+  }
+  @media (min-width: $screen-md) {
+    margin: #{math.div(-$column-gutter-md, 2)} #{math.div(
+        -$column-gutter-md,
+        2
+      )} #{$component-gutter-md - math.div($column-gutter-md, 2)};
+    > * {
+      margin: math.div($column-gutter-md, 2);
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    margin: #{math.div(-$column-gutter-lg, 2)} #{math.div(
+        -$column-gutter-lg,
+        2
+      )} #{$component-gutter-lg - math.div($column-gutter-lg, 2)};
+    > * {
+      margin: math.div($column-gutter-lg, 2);
+    }
+  }
+}
+
+@mixin component-columns-gutter-tight {
+  @include component-gutter;
+
+  margin: -#{math.div($column-gutter-sm, 4)} -#{math.div($column-gutter-sm, 4)}
+    #{$component-gutter-sm - math.div($column-gutter-sm, 4)};
+  > * {
+    margin: math.div($column-gutter-sm, 4);
+  }
+  @media (min-width: $screen-md) {
+    margin: #{math.div(-$column-gutter-md, 4)} #{math.div(
+        -$column-gutter-md,
+        4
+      )} #{$component-gutter-md - math.div($column-gutter-md, 4)};
+    > * {
+      margin: math.div($column-gutter-md, 4);
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    margin: #{math.div(-$column-gutter-lg, 4)} #{math.div(
+        -$column-gutter-lg,
+        4
+      )} #{$component-gutter-lg - math.div($column-gutter-lg, 4)};
+    > * {
+      margin: math.div($column-gutter-lg, 4);
+    }
+  }
+}
+
+@mixin arrow-link {
+  transition: all $transitionTime ease;
+  &:after {
+    transition: all $transitionTime ease;
+    display: inline;
+    content: "\00a0\00a0\00a0\00a0";
+    background: url("../../assets/images/hf-arrow.orange.svg") no-repeat center
+      right;
+    background-size: 60%;
+  }
+}
+
+@mixin button-link {
+  @include arrow-link;
+  cursor: pointer;
+  line-height: 1;
+  background-color: $orange;
+  color: white;
+  border: none;
+  padding: 0.5em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background-color $transitionTime ease;
+
+  fill: white;
+
+  &:after {
+    background-image: url("/images/hf-arrow.white.svg");
+  }
+  &:hover {
+    background-color: $blue-background;
+  }
+}
+
+@mixin markdown {
+  ul {
+    margin: 0 0 #{$rhythm-unit}em;
+    list-style-type: "\2013\2002";
+    list-style-position: outside;
+
+    li {
+      margin: 0 0 0 1em;
+    }
+  }
+}

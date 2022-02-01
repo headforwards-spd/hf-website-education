@@ -1,0 +1,283 @@
+@use "sass:math";
+@import "../../scss/mixins/columns";
+
+@mixin alphaBackgroundColor(
+  $desired_colour,
+  $desired_alpha,
+  $background_colour: white
+) {
+  $r3: red($desired_colour);
+  $g3: green($desired_colour);
+  $b3: blue($desired_colour);
+
+  $r2: red($background_colour);
+  $g2: green($background_colour);
+  $b2: blue($background_colour);
+
+  // r1 = (r3 - r2 + r2 * a1) / a1
+  $r1: math.div(($r3 - $r2 + ($r2 * $desired_alpha)), $desired_alpha);
+  $g1: math.div(($g3 - $g2 + ($g2 * $desired_alpha)), $desired_alpha);
+  $b1: math.div(($b3 - $b2 + ($b2 * $desired_alpha)), $desired_alpha);
+
+  background-color: rgba($r1 * 1.1, $g1 * 1.1, $b1 * 1.1, $desired_alpha);
+}
+
+.intro {
+  @media (min-width: $screen-md) {
+    position: relative;
+    width: $singleColumnMaxWidth;
+  }
+}
+
+.pages {
+  @include columns-component;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  margin-top: 0;
+  @media (min-width: $screen-md) {
+    align-items: stretch;
+    margin-top: 0;
+  }
+
+  &.postits {
+    margin-bottom: $component-gutter-sm - math.div($column-gutter-sm, 2);
+    margin-top: math.div(-$column-gutter-sm, 2);
+    @media (min-width: $screen-md) {
+      margin-bottom: $component-gutter-md - math.div($column-gutter-md, 2);
+      margin-top: math.div(-$column-gutter-md, 2);
+    }
+    @media (min-width: $screen-lg) {
+      margin-bottom: $component-gutter-lg - math.div($column-gutter-lg, 2);
+
+      margin-top: math.div(-$column-gutter-lg, 2);
+    }
+  }
+
+  > article {
+    @include fontMedium;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $component-gutter-md;
+    margin-top: 0;
+    @media (min-width: $screen-md) {
+      margin-bottom: $component-gutter-md - (math.div($column-gutter-md, 2));
+    }
+    @media (min-width: $screen-lg) {
+      margin-bottom: $component-gutter-lg - (math.div($column-gutter-lg, 2));
+    }
+  }
+
+  > img {
+    align-self: flex-end;
+    display: none;
+    opacity: 0.05;
+    @media (min-width: $screen-md) {
+      display: block;
+      padding: $column-gutter-md * 2;
+    }
+    @media (min-width: $screen-lg) {
+      padding: $column-gutter-lg * 2;
+    }
+  }
+
+  > article,
+  > .postit,
+  img {
+    width: calc(100% - #{$column-gutter-sm});
+  }
+
+  @media (min-width: $screen-md) {
+    justify-content: flex-start;
+    margin-bottom: 0;
+    > article,
+    > .postit,
+    img {
+      width: calc(50% - #{$column-gutter-md});
+    }
+  }
+  @media (min-width: $screen-lg) {
+    > article,
+    > .postit,
+    img {
+      width: calc(50% - #{$column-gutter-lg});
+    }
+  }
+
+  .postit {
+    @include fontLarge;
+    overflow: hidden;
+    padding-bottom: calc(100% - #{$column-gutter-sm});
+    @media (min-width: $screen-md) {
+      @include fontMedium;
+      padding-bottom: 35%;
+    }
+    @media (min-width: $screen-lg) {
+      padding-bottom: 31.25%;
+    }
+
+    > a {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: $column-gutter-sm;
+      @media (min-width: $screen-md) {
+        padding: $column-gutter-md;
+      }
+      @media (min-width: $screen-lg) {
+        padding: $column-gutter-lg;
+      }
+
+      &,
+      p,
+      li,
+      time {
+        color: black;
+      }
+
+      .readMore {
+        color: black;
+        @include headingFontMediumVr;
+        @include arrow-link;
+        margin-bottom: 0;
+        margin-top: auto;
+
+        &:after {
+          background-image: url("../../assets/images/hf-arrow.black.svg");
+        }
+
+        @media (min-width: $screen-md) {
+          @include headingFontMediumVr;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .arrow {
+    width: calc(50% - 2em);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .page > a {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    h2 {
+      @include arrow-link;
+      flex-grow: 1;
+    }
+
+    > section {
+      position: relative;
+
+      padding-bottom: 37.5%;
+      display: none;
+
+      @media (min-width: $screen-md) {
+        padding-bottom: unset;
+        display: flex;
+      }
+    }
+  }
+
+  .placeholder {
+    opacity: 0.3;
+  }
+
+  .introduction {
+    display: none;
+    &:before,
+    p {
+      opacity: 0;
+    }
+    &:after,
+    p {
+      transition: all ease 0.5s;
+      transition-delay: 0.25s;
+    }
+    & > p {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      z-index: 2;
+      &:before {
+        content: "";
+        display: block;
+        height: 2.5em;
+        width: 2.5em;
+        margin-bottom: auto;
+        background: url("../../assets/images/headforwards-emblem.white.svg");
+        background-size: cover;
+        z-index: 2;
+      }
+    }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: transparent;
+      mix-blend-mode: multiply;
+      z-index: 0;
+    }
+    &:hover {
+      &:after {
+        background-color: $orange;
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          @include alphaBackgroundColor($orange, 0.7);
+        }
+      }
+      p {
+        opacity: 1;
+      }
+    }
+    margin-bottom: 0;
+    overflow: hidden;
+    position: absolute;
+
+    width: calc(100% - #{math.div($column-gutter-sm, 2)});
+    > :last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      @media (min-width: $screen-md) {
+        opacity: 1;
+        transition-delay: 0s;
+      }
+    }
+    > * {
+      @include headingFontMedium;
+      color: white;
+      font-weight: bold;
+      line-height: $mod_1;
+    }
+    @media (min-width: $screen-md) {
+      display: flex;
+      flex-direction: column;
+      bottom: math.div(-$column-gutter-md, 2);
+      height: 100%;
+      left: math.div(-$column-gutter-md, 2);
+      padding: $column-gutter-md;
+      width: 100%;
+    }
+    @media (min-width: $screen-lg) {
+      bottom: math.div(-$column-gutter-lg, 2);
+      left: math.div(-$column-gutter-lg, 2);
+      padding: $column-gutter-lg;
+    }
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 0;
+    }
+  }
+}

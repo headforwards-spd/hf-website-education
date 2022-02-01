@@ -1,0 +1,389 @@
+@use "sass:math";
+@import "../variables";
+@import "./mixins";
+
+$rhythm-unit: 1.488;
+$heading-scale: 1.87;
+$heading-scale-vr: 1.2;
+
+$mod_1: 1.2; // mobile
+$mod_2: 1.44; // desktop
+
+@mixin orange-type {
+  color: $orange;
+  font-weight: 700;
+}
+
+$scale1_m: 1;
+$scale2_m: pow($mod_1, 1);
+$scale3_m: pow($mod_1, 2);
+$scale4_m: pow($mod_1, 3);
+$scale5_m: pow($mod_1, 4);
+$scale6_m: pow($mod_1, 5);
+
+$scale1_d: 1;
+$scale2_d: pow($mod_2, 1);
+$scale3_d: pow($mod_2, 2);
+$scale4_d: pow($mod_2, 3);
+$scale5_d: pow($mod_2, 4);
+$scale6_d: pow($mod_2, 5);
+
+$heading-margin-bottom: #{math.div($rhythm-unit, $heading-scale) * 0.8}em;
+$line-height: $rhythm-unit;
+$homeHeadingFontScale: 1.125;
+
+@mixin fontBase {
+  h1,
+  h2 {
+    color: $header_black;
+    font-weight: bold;
+    line-height: math.div($rhythm-unit, $heading-scale) * 1.65;
+    margin: 0 0 #{math.div($rhythm-unit, $heading-scale) * 0.8}em;
+    @media (min-width: $screen-lg) {
+      margin-bottom: #{math.div($rhythm-unit, $heading-scale) * 0.8}em;
+      line-height: math.div($rhythm-unit, $heading-scale) * 1.65;
+    }
+  }
+
+  p,
+  time,
+  li {
+    color: $paragraph_grey;
+    font-weight: 400;
+    line-height: $rhythm-unit;
+    margin: 0 0 #{$rhythm-unit * 0.6}em;
+    @media (min-width: $screen-md) {
+      margin-bottom: #{$rhythm-unit * 0.8}em;
+    }
+  }
+}
+
+@mixin headingFontXXXLarge {
+  @include fluid-type(
+    $min_font * $scale5_m * $heading-scale-vr,
+    $max_font * $scale5_d * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      $min_font * $scale5_m * $heading-scale,
+      $max_font * $scale5_d * $heading-scale
+    );
+  }
+}
+
+@mixin fontXXXLarge {
+  h1,
+  h2 {
+    @include headingFontXXXLarge;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale5_m, $max_font * $scale5_d);
+  }
+}
+
+@mixin fontXXXLargeVr {
+  h1,
+  h2 {
+    @include fluid-type(
+      $min_font * $scale5_m * $heading-scale-vr,
+      $max_font * $scale5_d * $heading-scale-vr
+    );
+    line-height: math.div($rhythm-unit, $heading-scale-vr);
+    margin-bottom: #{math.div($rhythm-unit, $heading-scale-vr)}em;
+  }
+  &,
+  p,
+  time,
+  li {
+    margin-bottom: #{$rhythm-unit}em;
+  }
+}
+
+@mixin headingFontXXLarge {
+  @include fluid-type(
+    $min_font * $scale4_m * $heading-scale-vr,
+    $max_font * $scale4_d * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      $min_font * $scale4_m * $heading-scale,
+      $max_font * $scale4_d * $heading-scale
+    );
+  }
+}
+
+@mixin fontXXLarge {
+  h1,
+  h2 {
+    @include headingFontXXLarge;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale4_m, $max_font * $scale4_d);
+  }
+}
+
+@mixin fontXXLargeVr {
+  h1,
+  h2 {
+    @include fluid-type(
+      $min_font * $scale4_m * $heading-scale-vr,
+      $max_font * $scale4_d * $heading-scale-vr
+    );
+    line-height: math.div($rhythm-unit, $heading-scale-vr);
+    margin-bottom: #{math.div($rhythm-unit, $heading-scale-vr)}em;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale4_m, $max_font * $scale4_d);
+    margin-bottom: #{$rhythm-unit}em;
+  }
+}
+
+@mixin headingFontHomePage {
+  @include fluid-type(
+    $min_font * $scale3_m * $heading-scale-vr * $homeHeadingFontScale,
+    $max_font * $scale3_d * $heading-scale * $homeHeadingFontScale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      $min_font * $scale3_m * $heading-scale * $homeHeadingFontScale,
+      $max_font * $scale3_d * $heading-scale * $homeHeadingFontScale
+    );
+    line-height: 1;
+  }
+}
+
+@mixin headingFontXLarge {
+  @include fluid-type(
+    $min_font * $scale3_m * $heading-scale-vr,
+    $max_font * $scale3_d * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      $min_font * $scale3_m * $heading-scale,
+      $max_font * $scale3_d * $heading-scale
+    );
+  }
+}
+
+@mixin fontXLarge {
+  h1,
+  h2 {
+    @include headingFontXLarge;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale3_m, $max_font * $scale3_d);
+  }
+}
+
+@mixin headingFontLargeVr {
+  @include fluid-type(
+    $min_font * $scale3_m * $heading-scale-vr,
+    $max_font * $scale3_d * $heading-scale-vr
+  );
+  line-height: math.div($rhythm-unit, $heading-scale-vr);
+  margin-bottom: #{math.div($rhythm-unit, $heading-scale-vr)}em;
+}
+
+@mixin fontXLargeVr {
+  h1,
+  h2 {
+    @include headingFontLargeVr;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale3_m, $max_font * $scale3_d);
+    margin-bottom: #{$rhythm-unit}em;
+  }
+}
+
+@mixin headingFontLarge {
+  @include fluid-type(
+    $min_font * $scale2_m * $heading-scale-vr,
+    $max_font * $scale2_d * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      $min_font * $scale2_m * $heading-scale,
+      $max_font * $scale2_d * $heading-scale
+    );
+  }
+}
+
+@mixin fontLarge {
+  h1,
+  h2 {
+    @include headingFontLarge;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale2_m, $max_font * $scale2_d);
+  }
+}
+
+@mixin fontLargeVr {
+  h1,
+  h2 {
+    @include fluid-type(
+      $min_font * $scale2_m * $heading-scale-vr,
+      $max_font * $scale2_d * $heading-scale-vr
+    );
+    line-height: math.div($rhythm-unit, $heading-scale-vr);
+    margin-bottom: #{math.div($rhythm-unit, $heading-scale-vr)}em;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale2_m, $max_font * $scale2_d);
+    margin-bottom: #{$rhythm-unit}em;
+  }
+}
+
+@mixin headingFontMedium {
+  @include fluid-type(
+    $min_font * $scale1_m * $heading-scale-vr,
+    $max_font * $scale1_d * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      $min_font * $scale1_m * $heading-scale,
+      $max_font * $scale1_d * $heading-scale
+    );
+  }
+}
+
+@mixin fontMedium {
+  h1,
+  h2 {
+    @include headingFontMedium;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale1_m, $max_font * $scale1_d);
+  }
+}
+
+@mixin headingFontMediumVr {
+  @include fluid-type(
+    $min_font * $scale1_m * $heading-scale-vr,
+    $max_font * $scale1_d * $heading-scale-vr
+  );
+  line-height: math.div($rhythm-unit, $heading-scale-vr);
+  margin-bottom: #{math.div($rhythm-unit, $heading-scale-vr)}em;
+}
+
+@mixin fontMediumVr {
+  h1,
+  h2 {
+    @include headingFontMediumVr;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type($min_font * $scale1_m, $max_font * $scale1_d);
+    margin-bottom: #{$rhythm-unit}em;
+  }
+}
+
+@mixin headingFontSmall {
+  @include fluid-type(
+    math.div($min_font, $scale2_m) * $heading-scale-vr,
+    math.div($max_font, $scale2_d) * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      math.div($min_font, $scale2_m) * $heading-scale,
+      math.div($max_font, $scale2_d) * $heading-scale
+    );
+  }
+}
+
+@mixin fontSmall {
+  h1,
+  h2 {
+    @include headingFontSmall;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type(
+      math.div($min_font, $scale2_m),
+      math.div($max_font, $scale2_d)
+    );
+  }
+}
+
+@mixin headingFontSmallVr {
+  @include fluid-type(
+    math.div($min_font, $scale2_m) * $heading-scale-vr,
+    math.div($max_font, $scale2_d) * $heading-scale-vr
+  );
+  line-height: math.div($rhythm-unit, $heading-scale-vr);
+  margin-bottom: #{math.div($rhythm-unit, $heading-scale-vr)}em;
+}
+
+@mixin fontSmallVr {
+  h1,
+  h2 {
+    @include headingFontSmallVr;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type(
+      math.div($min_font, $scale2_m),
+      math.div($max_font, $scale2_d)
+    );
+    margin-bottom: #{$rhythm-unit}em;
+  }
+}
+
+@mixin headingFontXSmall {
+  @include fluid-type(
+    math.div($min_font, $scale3_m) * $heading-scale-vr,
+    math.div($max_font, $scale3_d) * $heading-scale
+  );
+  @media (min-width: $screen-lg) {
+    @include fluid-type(
+      math.div($min_font, $scale3_m) * $heading-scale,
+      math.div($max_font, $scale3_d) * $heading-scale
+    );
+  }
+}
+
+@mixin fontXSmall {
+  h1,
+  h2 {
+    @include headingFontXSmall;
+  }
+  &,
+  p,
+  time,
+  li {
+    @include fluid-type(
+      math.div($min_font, $scale3_m),
+      math.div($max_font, $scale3_d)
+    );
+  }
+}

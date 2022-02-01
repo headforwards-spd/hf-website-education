@@ -1,0 +1,55 @@
+@use "sass:math";
+@import "../variables";
+
+@mixin flexRow($direction: row, $wrap: wrap, $justify-content: space-between) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify-content;
+  margin-bottom: $column-gutter-sm;
+  @media (min-width: $screen-md) {
+    margin-bottom: $column-gutter-md;
+  }
+  @media (min-width: $screen-lg) {
+    margin-bottom: $column-gutter-lg;
+  }
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function pow($base, $exponents) {
+  $raised: 1;
+
+  @for $i from 1 through $exponents {
+    $raised: $raised * $base;
+  }
+
+  @return $raised;
+}
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+  $min-vw: $screen-sm;
+  $max-vw: $screen-xl;
+
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            (math.div((100vw - #{$min-vw}), #{strip-unit($max-vw - $min-vw)}))
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}

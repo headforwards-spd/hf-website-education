@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../../../scss/variables";
 @import "../../../scss/mixins/mixins";
 @import "../../../scss/mixins/typography";
@@ -15,12 +16,12 @@
 
   position: relative;
   @media (min-width: $screen-md) {
-    padding-bottom: $component-gutter-md/4;
-    padding-top: $component-gutter-md/4;
+    padding-bottom: math.div($component-gutter-md, 4);
+    padding-top: math.div($component-gutter-md, 4);
   }
   @media (min-width: $screen-lg) {
-    padding-bottom: $component-gutter-lg/4;
-    padding-top: $component-gutter-lg/4;
+    padding-bottom: math.div($component-gutter-lg, 4);
+    padding-top: math.div($component-gutter-lg, 4);
   }
 
   > header {
@@ -28,12 +29,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 -#{$column-gutter-sm/2};
+    margin: 0 -#{math.div($column-gutter-sm, 2)};
     @media (min-width: $screen-md) {
-      margin: 0 -#{$column-gutter-md/2};
+      margin: 0 -#{math.div($column-gutter-md, 2)};
     }
     @media (min-width: $screen-lg) {
-      margin: 0 -#{$column-gutter-lg/2};
+      margin: 0 -#{math.div($column-gutter-lg, 2)};
     }
 
     a {
@@ -44,14 +45,14 @@
       flex: 1;
 
       line-height: 3;
-      margin: 0.375em $column-gutter-sm/2;
+      margin: 0.375em math.div($column-gutter-sm, 2);
       text-indent: -1000vw;
       height: 2.25em;
       @media (min-width: $screen-md) {
-        margin: 0.375em $column-gutter-md/2;
+        margin: 0.375em math.div($column-gutter-md, 2);
       }
       @media (min-width: $screen-lg) {
-        margin: 0 $column-gutter-lg/2;
+        margin: 0 math.div($column-gutter-lg, 2);
         height: 2.25em;
       }
       @media (min-width: $screen-xl) {
@@ -132,7 +133,7 @@
 
           ul {
             @include fontLarge;
-            margin: #{$rhythm-unit/2}em 0 #{$rhythm-unit}em;
+            margin: #{math.div($rhythm-unit, 2)}em 0 #{$rhythm-unit}em;
           }
 
           a {
@@ -204,7 +205,7 @@
       }
 
       ul {
-        margin-bottom: $column-gutter-sm/2;
+        margin-bottom: math.div($column-gutter-sm, 2);
       }
     }
   }
@@ -232,7 +233,7 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      margin-top: $component-gutter-sm/4;
+      margin-top: math.div(component-gutter-sm, 4);
       opacity: 1;
       overflow: hidden;
 
@@ -256,7 +257,7 @@
         @include fontMedium;
         display: flex;
         flex-direction: row;
-        margin: $component-gutter-md -#{$column-gutter-md/2};
+        margin: $component-gutter-md -#{math.div($column-gutter-md, 2)};
 
         .navHomeLink {
           display: unset;
@@ -301,10 +302,10 @@
 
       > section {
         display: flex;
-        margin: 0 -#{$column-gutter-md/2};
+        margin: 0 -#{math.div($column-gutter-md, 2)};
 
         > * {
-          margin: 0 $column-gutter-md/2;
+          margin: 0 math.div($column-gutter-md, 2);
           min-width: calc((100% / 5) - #{$column-gutter-md});
         }
       }
@@ -341,7 +342,7 @@
 
     > section {
       display: block;
-      margin-top: $component-gutter-sm/2;
+      margin-top: math.div($component-gutter-sm, 2);
       max-width: 100%;
       opacity: unset;
 
@@ -352,7 +353,10 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-end;
-        margin: 0 -#{$column-gutter-lg/2} 0 #{$column-gutter-lg/2};
+        margin: 0 -#{math.div($column-gutter-lg, 2)} 0 #{math.div(
+            $column-gutter-lg,
+            2
+          )};
 
         .navHomeLink {
           display: none;
@@ -364,7 +368,7 @@
 
         > li {
           border: none;
-          margin: 0 $column-gutter-lg/2;
+          margin: 0 math.div($column-gutter-lg, 2);
           position: relative;
           width: unset;
 
@@ -437,7 +441,7 @@
 
             > ul {
               @include fontMedium;
-              margin: $column-gutter-lg/2 0;
+              margin: math.div($column-gutter-lg, 2) 0;
 
               li {
                 margin: 0;
@@ -450,7 +454,7 @@
               font-weight: normal;
               line-height: 2;
               margin: 0;
-              padding: $column-gutter-lg/2 0;
+              padding: math.div($column-gutter-lg, 2) 0;
             }
 
             a {
@@ -460,7 +464,7 @@
               @include arrow-link;
               font-weight: bold;
               line-height: #{$rhythm-unit}em;
-              margin: #{1 - ($rhythm-unit/2)}em;
+              margin: #{1 - (math.div($rhythm-unit, 2))}em;
             }
           }
 

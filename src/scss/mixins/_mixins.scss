@@ -44,7 +44,7 @@
       @media screen and (min-width: $min-vw) {
         font-size: calc(
           #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
-            (math.div((100vw - #{$min-vw}), #{strip-unit($max-vw - $min-vw)}))
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
         );
       }
       @media screen and (min-width: $max-vw) {

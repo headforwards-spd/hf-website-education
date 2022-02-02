@@ -52,18 +52,18 @@
       }
 
       > a {
-        width: calc((math.div(100%, 1)) - #{math.div($column-gutter-sm, 2)});
+        width: calc((100% / 1) - #{$column-gutter-sm}/ 2);
         margin: math.div($column-gutter-sm, 2) math.div($column-gutter-sm, 4);
         z-index: 100;
         @media (min-width: $screen-md) {
           display: flex;
           flex-direction: column;
           margin: math.div($column-gutter-md, 2) math.div($column-gutter-md, 4);
-          width: calc((math.div(100%, 3)) - #{math.div($column-gutter-md, 2)});
+          width: calc((100% / 3) - #{$column-gutter-md}/ 2);
         }
         @media (min-width: $screen-lg) {
           margin: math.div($column-gutter-lg, 2) math.div($column-gutter-lg, 4);
-          width: calc((math.div(100%, 3)) - #{math.div($column-gutter-lg, 2)});
+          width: calc((100% / 3) - #{$column-gutter-lg}/ 2);
         }
 
         button {
